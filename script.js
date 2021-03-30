@@ -36,6 +36,7 @@ form.addEventListener('submit', function (event) {
     showList();
     document.getElementById('allMessages').style.display = "block";
     event.preventDefault();
+    countUnread();
     form.reset();
     document.getElementById('form').reset();
 });
@@ -53,10 +54,10 @@ function showList() {
         divContainer.appendChild(bodyText);
         var lineNode = document.createElement('hr');
         divContainer.appendChild(lineNode);
+        var indexOfEvent = msgs.messages.length - 1;
         divContainer.addEventListener("click", function () {
-            // alert('click');
             divContainer.style.backgroundColor = 'white';
-            msgs.messages[msgs.messages.length - 1].read = true;
+            msgs.messages[indexOfEvent].read = true;
             countUnread();
         });
         document.getElementById('allMessages').appendChild(divContainer);
