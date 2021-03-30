@@ -12,7 +12,7 @@
             overflow: hidden;
             border: 1px solid rgb(50, 48, 116);
             background-color: #33ff66b0;
-            display: flex; 
+            display: flex;
             justify-content: flex-end;
         }
 
@@ -51,8 +51,8 @@
 <body>
 
     <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'London')">Messages()</button>
-        <button class="tablinks" onclick="openCity(event, 'Paris')">Add New Message</button>
+        <button id="showMessages" onclick="showMessages()">Messages()</button>
+        <button id="addNewMessage" onclick="addNewMessage()">Add New Message</button>
         <!-- <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button> -->
     </div>
 
@@ -64,6 +64,9 @@
         <input type="text" name="body" style="margin: inherit 0 inherit inherit inherit;width: 1200px;height: 40px;" />
         <button id="button" style="margin: inherit;">Submit</button>
     </form>
+
+    <div id="allMessages" style="display: none;">
+    </div>
 </body>
 
 <script src="./script.js" defer></script>
