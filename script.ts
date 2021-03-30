@@ -47,23 +47,30 @@ form.addEventListener('submit', function (event) {
 });
 
 function showList() {
-    var subjectNode = document.createElement("h2");
-    subjectNode.style.color = "red";
-    var subjectText = document.createTextNode(msgs.messages[msgs.messages.length - 1].subject);
-    subjectNode.appendChild(subjectText);
-    var bodyNode = document.createElement("p");
-    var bodyText = document.createTextNode(msgs.messages[msgs.messages.length - 1].body);
-    bodyNode.appendChild(bodyText);
-    var divContainer=document.createElement('div');
-    divContainer.appendChild(subjectNode);
-    divContainer.appendChild(bodyText);
-    var lineNode = document.createElement('hr');
-    divContainer.appendChild(lineNode);
-    document.getElementById('allMessages').appendChild(divContainer);
-    if(msgs.messages[msgs.messages.length-1].read==false){
-        divContainer.style.backgroundColor='green';
+    if(document.getElementById('allMessages').style.display!='block'){
+        var subjectNode = document.createElement("h2");
+        subjectNode.style.color = "red";
+        var subjectText = document.createTextNode(msgs.messages[msgs.messages.length - 1].subject);
+        subjectNode.appendChild(subjectText);
+        var bodyNode = document.createElement("p");
+        var bodyText = document.createTextNode(msgs.messages[msgs.messages.length - 1].body);
+        bodyNode.appendChild(bodyText);
+        var divContainer = document.createElement('div');
+        divContainer.appendChild(subjectNode);
+        divContainer.appendChild(bodyText);
+        var lineNode = document.createElement('hr');
+        divContainer.appendChild(lineNode);
+        divContainer.addEventListener("click", function () {
+            // alert('click');
+            divContainer.style.backgroundColor = 'white';
+            msgs.messages[msgs.messages.length - 1].read = true;
+            countUnread();
+        });
+        document.getElementById('allMessages').appendChild(divContainer);
+        if (msgs.messages[msgs.messages.length - 1].read == false) {
+            divContainer.style.backgroundColor = 'DodgerBlue';
+        }
     }
-
 }
 
 function showMessages() {
@@ -75,5 +82,24 @@ function showMessages() {
 function addNewMessage() {
     document.getElementById('allMessages').style.display = 'none';
     document.getElementById('form').style.display = 'block';
+}
+
+function countUnread() {
+    var count = 0;
+    var result="";
+    for (let i in msgs.messages) {
+        if (msgs.messages[i].read == false) {
+            count++;
+        }
+    }
+    if (count > 5)
+        result= '5+';
+    else
+        result= count.toString();
+    console.log(`the number of unread messages is: `+result);
+    var paragraphElement1=document.getElementById('numberOfUnreadMessages1') as HTMLParagraphElement;
+    var paragraphElement2=document.getElementById('numberOfUnreadMessages2') as HTMLParagraphElement;
+    paragraphElement1.innerHTML=result.toString();
+    paragraphElement2.innerHTML=result.toString();
 }
 
