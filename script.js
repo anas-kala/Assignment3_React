@@ -80,15 +80,17 @@ function countUnread() {
     for (var i in msgs.messages) {
         if (msgs.messages[i].read == false) {
             count++;
+            console.log("count: " + count);
         }
     }
     if (count > 5)
         result = '5+';
     else
         result = count.toString();
-    console.log("the number of unread messages is: " + result);
-    var paragraphElement1 = document.getElementById('numberOfUnreadMessages1');
-    var paragraphElement2 = document.getElementById('numberOfUnreadMessages2');
-    paragraphElement1.innerHTML = result.toString();
-    paragraphElement2.innerHTML = result.toString();
+    // console.log('the number of unread messages is: '+result);
+    // console.log(document.getElementById('not1').innerHTML);
+    var paragraphElement1 = document.getElementById("not1");
+    var paragraphElement2 = document.getElementById("not2");
+    paragraphElement1.innerHTML = "Messages (" + result + ") new";
+    paragraphElement2.innerHTML = "You have " + result + " new messages";
 }

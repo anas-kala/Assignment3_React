@@ -47,7 +47,7 @@ form.addEventListener('submit', function (event) {
 });
 
 function showList() {
-    if(document.getElementById('allMessages').style.display!='block'){
+    if (document.getElementById('allMessages').style.display != 'block') {
         var subjectNode = document.createElement("h2");
         subjectNode.style.color = "red";
         var subjectText = document.createTextNode(msgs.messages[msgs.messages.length - 1].subject);
@@ -84,22 +84,27 @@ function addNewMessage() {
     document.getElementById('form').style.display = 'block';
 }
 
+
+
 function countUnread() {
     var count = 0;
-    var result="";
+    var result = "";
     for (let i in msgs.messages) {
         if (msgs.messages[i].read == false) {
             count++;
+            console.log("count: " + count);
         }
     }
     if (count > 5)
-        result= '5+';
+        result = '5+';
     else
-        result= count.toString();
-    console.log(`the number of unread messages is: `+result);
-    var paragraphElement1=document.getElementById('numberOfUnreadMessages1') as HTMLParagraphElement;
-    var paragraphElement2=document.getElementById('numberOfUnreadMessages2') as HTMLParagraphElement;
-    paragraphElement1.innerHTML=result.toString();
-    paragraphElement2.innerHTML=result.toString();
+        result = count.toString();
+    // console.log('the number of unread messages is: '+result);
+    // console.log(document.getElementById('not1').innerHTML);
+    const paragraphElement1 = document.getElementById("not1") as HTMLParagraphElement;
+    const paragraphElement2 = document.getElementById("not2") as HTMLParagraphElement;
+    
+    paragraphElement1.innerHTML = "Messages ("+result+") new";
+    paragraphElement2.innerHTML= "You have " + result + " new messages";
 }
 

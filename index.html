@@ -51,7 +51,9 @@
 <body>
 
     <div class="tab">
-        <button id="showMessages" onclick="showMessages()">Messages(<p id="numberOfUnreadMessages1"></p> new) </button>
+        <button id="showMessages" onclick="showMessages()">
+            <p id="not1">Messages (0) new</p>
+        </button>
         <button id="addNewMessage" onclick="addNewMessage()">Add New Message</button>
         <!-- <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button> -->
     </div>
@@ -66,7 +68,7 @@
     </form>
 
     <div id="allMessages" style="display: none;">
-        <p style="color: red;">You have <p id="numberOfUnreadMessages2"></p> new messages!</p>
+        <p style="color: red;" id="not2">You have 0 new messages!</p>
     </div>
 </body>
 
